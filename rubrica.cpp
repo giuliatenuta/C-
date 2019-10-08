@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
-#include <ctime>
+#include <ctime> 
 #include <stdlib.h>
-#include <ctype.h>
-#include <stdio.h>
-#include <cstdlib>
+#include <stdio.h> //libreria che serve per le funzioni toupper() e tolower()//
+#include <cstdlib> //libreria per controllare il tipo di sistema operativo del computer sulla quale viene fatto esguire il programma//
 #include <array>
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //libreria per la funzione compareinterval//
 using namespace std;
 
 bool compareinterval(vector <string>i1, vector<string>i2) {
@@ -44,14 +43,14 @@ int main(){
     while (azione!=8) {
      
         cout << "\nBenvenuto\a nella tua rubrica! Ecco le operazioni possibili:\n";
-        cout << "1. Crea nuovo Contatto\n";
-        cout << "2. Modifica Contatto\n";
-        cout << "3. Elimina Contatto\n";
-        cout << "4. Cerca contatto per nome o cognome\n";
-        cout << "5. Visualizza intera rubrica\n";
-        cout << "6. Elimina intera rubrica\n";
-        cout << "7. Visualizza Preferiti\n";
-        cout << "8. ESCI\n";
+        cout << "1. Crea nuovo Contatto" << endl;
+        cout << "2. Modifica Contatto" << endl;
+        cout << "3. Elimina Contatto" << endl;
+        cout << "4. Cerca contatto per nome o cognome" << endl;
+        cout << "5. Visualizza intera rubrica" << endl;
+        cout << "6. Elimina intera rubrica" << endl;
+        cout << "7. Visualizza Preferiti" << endl;
+        cout << "8. ESCI\n" << endl;
         cout << "Inserisci il numero corrispondente all'azione che vuoi eseguire\n\n";
         cin >> azione;
      
@@ -67,9 +66,19 @@ int main(){
                 cout << "Nome: ";
                 cin >> nome;
                 nome[0] = toupper(nome[0]);
-                cout << "Cognome: ";
+                for (int y=1; y<nome.size(); y++) {
+                  nome[y]=tolower(nome[y]);
+                }
+                cout << "Cognome(se non vuoi aggiungere questa voce scrivi 'No'): ";
                 cin >> cognome;
-                cognome[0] = toupper(cognome[0]);
+                if (cognome == "no" || cognome == "No" || cognome == "NO") {
+                  cognome = ""; 
+                } else {
+                  cognome[0] = toupper(cognome[0]);
+                  for (int y=1; y<cognome.size(); y++) {
+                    cognome[y]=tolower(cognome[y]);
+                  }
+                }
                 cout << "Numero: ";
                 cin >> numero;
                 while (numero.size() != 10) {
@@ -96,7 +105,7 @@ int main(){
                 sort(agenda.begin(),agenda.end(),compareinterval);
                 int l = agenda.size();
                 cout << "CONTATTI IN AGENDA\n";
-                cout << "********************************\n";
+                cout << "***********************************\n";
                 for (int i=0; i<l; i++){
                     for (int e=0; e==0 || e==1; e++){
                         if (e==0) {
@@ -106,7 +115,7 @@ int main(){
                         }
                     }
                 }
-                cout << "********************************\n\n";
+                cout << "***********************************\n\n";
                 cout << "Scrivi il numero del contatto che vuoi modificare;\n";
                 int num_modifica;
                 cin >> num_modifica;
@@ -153,7 +162,7 @@ int main(){
                 sort(agenda.begin(),agenda.end(),compareinterval);
                 int l = agenda.size();
                 cout << "CONTATTI IN AGENDA\n";
-                cout << "********************************\n";
+                cout << "***********************************\n";
                 for (int i=0; i<l; i++){
                     for (int e=0; e==0 || e==1; e++){
                         if (e==0) {
@@ -163,7 +172,7 @@ int main(){
                         }
                     }
                 }
-                cout << "********************************\n";
+                cout << "***********************************\n";
                 cout << "Scrivi il numero del contatto che vuoi eliminare:\n";
                 int elimina_contatto;
                 cin >> elimina_contatto;
@@ -214,7 +223,7 @@ int main(){
 
                 if(contatore != 0){
                     cout << "\nCONTATTI TROVATI\n";
-                    cout << "********************************\n";
+                    cout << "***********************************\n";
                     for (int i=0; i<contatti_trovati.size(); i++){
                         for (int e=0; e==0 || e==1; e++){
                             if (e==0) {
@@ -224,7 +233,7 @@ int main(){
                             }
                         }
                     }
-                    cout << "********************************\n";
+                    cout << "***********************************\n";
                 }else{
                     cout << "Nessun contatto trovato\n";
                 }
@@ -235,7 +244,7 @@ int main(){
                 sort(agenda.begin(),agenda.end(),compareinterval);
                 int l = agenda.size();
                 cout << "CONTATTI IN AGENDA\n";
-                cout << "********************************\n";
+                cout << "***********************************\n";
                 for (int i=0; i<l; i++){
                     for (int e=0; e==0 || e==1; e++){
                         if (e==0) {
@@ -245,7 +254,7 @@ int main(){
                         }
                     }
                 }
-                cout << "********************************\n";
+                cout << "***********************************\n";
             } break;
              
             case 6: { // caso in cui l'agenda viene eliminata e quindi viene pulito il terminale//
@@ -275,7 +284,7 @@ int main(){
             } break;
              
             default:{
-                cout << "\nScelta non valida, inserisci il numero corrispondente all'azione che vuoi eseguire 0 9 per uscire";
+                cout << "\nOperazione non esistente, inserisci il numero corrispondente all'azione che vuoi eseguire o 8 per uscire\n";
             } break;
         }
     }
