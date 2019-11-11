@@ -3,17 +3,16 @@
 using namespace std;
  
 void VisualizzaOpzioni(){
- cout << "Benvenuto nella tua rubrica!" << endl;
  cout << "Ecco le operazioni possibili:" << endl;
  cout << "1. Visualizza tutti i contatti" << endl;
  cout << "2. Aggiungi contatto" << endl;
  cout << "3. Elimina contatto" << endl;
- cout << "4. Esci" << endl;
+ cout << "4. Esci\n" << endl;
  cout << "Scrivi il numero corrispondente all'azione da eseguire: " << endl;
 }
 
-
 int main() {
+  cout << "Benvenuto nella tua rubrica!" << endl;
   int azione;
   string numero;
   string nome;
@@ -30,34 +29,33 @@ int main() {
   rubrica[0][1] = "3312565895";
   rubrica[1][0] = "Asternisi Lorenzo";
   rubrica[1][1] = "3289856566";
-  int ci=0;
+
   
 
   while (azione!=4) {
     VisualizzaOpzioni();
     cin >> azione;
+    int ci;
  
    switch(azione){
      case 1:
+     cout << "***************************************" << endl;
      for (int i=0; i<l; i++) {
-      if (rubrica[i][1] != "") {
-        ci ++;
-      }
+     	if (rubrica[i][1] != "") {
+     			cout << i+1 << ". " << rubrica[i][0] << endl;
+      			cout << "   " << rubrica[i][1] << endl;
+		 } 
      }
      cout << "***************************************" << endl;
-     for (int i=0; i<ci; i++) {
-      cout << i+1 << ". " << rubrica[i][0] << endl;
-      cout << "   " << rubrica[i][1] << endl;
-     }
-     cout << "***************************************" << endl;
-     ci=0;
      break;
  
      case 2:
      cout << "Inserisci il nome del nuovo contatto: " << endl;
      cin >> nome;
+     nome[0] = toupper(nome[0]);
      cout << "\nCognome: " << endl;
      cin >> cognome;
+     cognome[0] = toupper(cognome[0]);
      cout << "Numero: ";
      cin >> numero;
 
@@ -65,12 +63,12 @@ int main() {
       cout << "Numero non esistente, riprova: ";
       cin >> numero;
      }
+     cout << "Nuovo contatto creato!\n\n" ;
      nomeint = cognome + " " + nome;
      for (int i=0; i<l; i++) {
         if (rubrica[i][1] == "") {
           rubrica[i][0] = nomeint;
           rubrica[i][1] = numero;
-          ci=0;
           break;
         } 
       }
@@ -82,8 +80,7 @@ int main() {
      cin >> elimina;
      rubrica[elimina-1][0] = "";
      rubrica[elimina-1][1] = "";
-     cout << "Contatto eliminato con successo!";
-     ci=0;
+     cout << "Contatto eliminato con successo!\n\n";
      break;
  
      default:
