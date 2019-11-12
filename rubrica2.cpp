@@ -11,6 +11,7 @@ void VisualizzaOpzioni(){
  cout << "Scrivi il numero corrispondente all'azione da eseguire: " << endl;
 }
 
+
 int main() {
   cout << "Benvenuto nella tua rubrica!" << endl;
   int azione;
@@ -35,7 +36,6 @@ int main() {
   while (azione!=4) {
     VisualizzaOpzioni();
     cin >> azione;
-    int ci;
  
    switch(azione){
      case 1:
@@ -44,7 +44,10 @@ int main() {
      	if (rubrica[i][1] != "") {
      			cout << i+1 << ". " << rubrica[i][0] << endl;
       			cout << "   " << rubrica[i][1] << endl;
-		 } 
+		 } else {
+		 	break;
+		 	
+		 }
      }
      cout << "***************************************" << endl;
      break;
