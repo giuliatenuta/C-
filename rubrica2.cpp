@@ -81,8 +81,16 @@ int main() {
      cout << "Contatto da eliminare: ";
      int elimina;
      cin >> elimina;
-     rubrica[elimina-1][0] = "";
-     rubrica[elimina-1][1] = "";
+     for (int e=elimina-1; e<l; e++) {
+     	if (rubrica[e+1][0] == "") {
+			rubrica[e][0] = "";
+			rubrica[e][1] = "";
+			break;
+		 } else {
+		 	rubrica[e][0]=rubrica[e+1][0];
+		 	rubrica[e][1]=rubrica[e+1][1];
+		 }
+	 }
      cout << "Contatto eliminato con successo!\n\n";
      break;
  
