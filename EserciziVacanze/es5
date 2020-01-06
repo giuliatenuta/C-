@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+void inserisci_valore(float &n1){
+    cout << "Inserisci valore: ";
+    cin >> n1;
+}
+
+float calc1(float n1){
+    if (n1 == 1) {
+    	return 1;
+	} else {
+		return n1*calc1(n1-1);	
+	} 
+}
+
+float calc2(float esponente){
+    if (esponente == 1) {
+    	return 3;
+	} else {
+		return 3*calc2(esponente-1);
+	} 
+}
+
+float rapp(float n1, float n2){
+    return n1/n2;
+}
+
+int main(){
+    float x, y;
+    inserisci_valore(x);
+    inserisci_valore(y);
+    cout << rapp(calc1(x), calc2(y));
+    return 0;
+}
