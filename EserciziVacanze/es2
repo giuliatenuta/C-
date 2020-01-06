@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+ 
+void chiedi_valori(int &n1, int &n2){
+	cout << "Valore numero 1: ";
+	cin >> n1;
+	cout << "Valore numero 2: ";
+	cin >> n2;
+}
+
+void chiedi_operatore(char &operatore){
+    cout << "Inserisci operatore(+, -, /, *, ^): ";
+    cin >> operatore;
+}
+
+
+int main(){
+	int risultato=0;
+	char operatore;
+	int n1,n2;
+	chiedi_valori(n1,n2);
+	while (true) {
+		chiedi_operatore(operatore);
+		switch(operatore) {
+			case 43:
+			risultato = n1+n2;
+			cout << "Risultato: " << risultato;
+			break;	
+			
+			case 45:
+			risultato=n1-n2;
+			cout << "Risultato: " << risultato;
+			break;	
+			
+			case 47:
+			risultato=n1/n2;
+			cout << "Risultato: " << risultato;
+			break;
+			
+			case 42:
+			risultato=n1*n2;
+			cout << "Risultato: " << risultato;
+			break;
+			
+			case 94:
+			risultato = 0;
+			for(int i=0; i<n2; i++) {
+				risultato = risultato*n1;
+			}
+			break;
+			
+			default:
+			cout << "Scelta non valida";
+			break;
+		} break;
+	} 
+	return 0; 
+}
