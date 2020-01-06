@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+void inserisci_valori(int &n1, int &n2){
+	cout << "Valore numero 1: ";
+	cin >> n1;
+	cout << "Valore numero 2: ";
+	cin >> n2;
+}
+
+void somma(int &n1, int &n2) {
+	cout << "Somma: " << n1+n2;
+}
+
+int main(){
+	int num1, num2;
+	inserisci_valori(num1,num2);
+	somma(num1,num2);
+	return 0;
+}
