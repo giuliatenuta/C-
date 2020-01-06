@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+void visualizza_opzioni( int &scelta){
+	cout << "Opzioni possibili: " << endl;
+    cout << "1. Inserisci il valore" << endl;
+    cout << "2. Calcolare il fattoriale" << endl;
+    cout << "3. Calcolare la potenza" << endl;
+    cout << "4. Esci" << endl;
+    cin >> scelta;
+}
+
+void inserisci_valore(int &n1){
+    cout << "Inserisci valore: ";
+    cin >> n1;
+}
+
+void inserisci_esponente(int &esponente){
+    cout << "Inserisci esponente: ";
+    cin >> esponente;
+}
+
+int fattoriale(int &n1){
+	if (n1==0) {
+		return 1;
+	}
+   	int risultato = 1;
+    for (int i = 0; i < n1; i ++){
+    	risultato = risultato * (n1-i);   			
+	}
+	return risultato;
+}
+
+int potenza(int &n1, int esponente){
+    if (esponente == 0){
+    	return 1;
+	} else if (esponente == 1) {
+		return n1;
+	} else {
+		return n1*potenza(n1,esponente-1);
+	}
+}
+
+int main(){
+    int numero, esponente, scelta, risultato;
+    while (scelta != 4){
+        visualizza_opzioni(scelta);
+        switch(scelta){
+            case 1:
+                inserisci_valore(numero);
+                break;
+            case 2:
+                risultato = fattoriale(numero);
+                cout << "Il fattoriale di "<< numero << " é " << risultato << endl;
+                break;
+            case 3:
+                inserisci_esponente(esponente);
+                risultato = potenza(numero, esponente);
+                cout << "La potenza  di "<< numero << " alla " << esponente << " é " << risultato << endl;
+                break;
+            case 4 : 
+                break;
+            default :
+                cout << "Scelta non valida"<< endl;
+                break;
+
+        }
+    }
+    
+    return 0;
+}
