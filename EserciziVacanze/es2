@@ -43,10 +43,11 @@ int main(){
 			break;
 			
 			case 94:
-			risultato = 0;
-			for(int i=0; i<n2; i++) {
+			risultato = 1;
+			for(int i=1; i<=n2; i++) {
 				risultato = risultato*n1;
 			}
+			cout << n1 << " alla " << n2 << " = " << risultato;
 			break;
 			
 			default:
