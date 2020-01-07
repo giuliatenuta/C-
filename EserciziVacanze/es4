@@ -25,8 +25,8 @@ int fattoriale(int &n1){
 		return 1;
 	}
    	int risultato = 1;
-    for (int i = 0; i < n1; i ++){
-    	risultato = risultato * (n1-i);   			
+    for (int i = 1; i <= n1; i ++){
+    	risultato *= n1;   			
 	}
 	return risultato;
 }
