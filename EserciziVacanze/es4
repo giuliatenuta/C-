@@ -25,8 +25,8 @@ int fattoriale(int &n1){
 		return 1;
 	}
    	int risultato = 1;
-    for (int i = 1; i <= n1; i ++){
-    	risultato *= n1;   			
+    for (int i = 0; i < n1; i ++){
+    	risultato = risultato * (n1-i);   			
 	}
 	return risultato;
 }
@@ -37,7 +37,11 @@ int potenza(int &n1, int esponente){
 	} else if (esponente == 1) {
 		return n1;
 	} else {
-		return n1*potenza(n1,esponente-1);
+		int risultato =1;
+		for (int i=1; i<=esponente; i++) {
+			risultato *= n1;
+		}
+		return risultato;
 	}
 }
 
@@ -56,7 +60,7 @@ int main(){
             case 3:
                 inserisci_esponente(esponente);
                 risultato = potenza(numero, esponente);
-                cout << "La potenza  di "<< numero << " alla " << esponente << " é " << risultato << endl;
+                cout << numero << " alla " << esponente << " fa " << risultato << endl;
                 break;
             case 4 : 
                 break;
