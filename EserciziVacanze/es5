@@ -1,25 +1,24 @@
 #include <iostream>
 using namespace std;
 
-void inserisci_valore(float &n1){
+void inse(float &n1){
     cout << "Inserisci valore: ";
     cin >> n1;
 }
 
-float calc1(float n1){
-    if (n1 == 1) {
-    	return 1;
-	} else {
-		return n1*calc1(n1-1);	
-	} 
+float calc1(float &n1){
+	float risultato =1;
+	for (int i=1; i<=n1; i++) {
+		risultato *=i;
+	}
+	return risultato;
 }
-
-float calc2(float esponente){
-    if (esponente == 1) {
-    	return 3;
-	} else {
-		return 3*calc2(esponente-1);
-	} 
+float calc2(float &esponente){
+	float risultato =1;
+	for (int i=1; i<=esponente; i++) {
+		risultato = risultato*3;
+	}
+	return risultato;
 }
 
 float rapp(float n1, float n2){
@@ -27,9 +26,9 @@ float rapp(float n1, float n2){
 }
 
 int main(){
-    float x, y;
-    inserisci_valore(x);
-    inserisci_valore(y);
-    cout << rapp(calc1(x), calc2(y));
+    float n1, n2;
+    inse(n1);
+    inse(n2);
+    cout << calc1(n1)/calc2(n2);
     return 0;
 }
