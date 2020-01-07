@@ -1,96 +1,120 @@
 #include <iostream>
+#include <vector>
+#include <ctime>
+#include <stdlib.h>
+#include <cstdlib>
 using namespace std;
 
+void crea_vettore(int vett[20]) {
+	srand(time(NULL));
+	for (int i=0; i<20; i++) {
+		int rn =rand()%20;
+		vett[i] = rn;
+	}
+	for (int i=0; i<20; i++) {
+		cout << vett[i] << endl;
+	}
+}
 
-void input_valori(int n1[20]){
-    int valore;
-    for(int i = 0; i<20; i++){
-        cout << "Inserisci valore : ";
-        cin >> valore;
-        n1[i] = valore;
-    }
-    
+void numeri_pari(int vett[20]){
+	cout << "Numeri pari:\n";
+	for (int i=0; i<20; i++) {
+		if (vett[i]%2 == 0) {
+			cout << vett[i] << endl;
+		}
+	}
 }
-void view_vet(int n1[20]){
-    cout << "Il vettore contiene: "<< endl;
-    for(int i = 0; i<20; i++){
-        cout << n1[i] << endl;
-    }
-}
-void numeri_pari(int n1[20]){
-    cout << "I numeri pari sono: "<< endl;
-    for(int i = 0 ; i <20; i++){
-        if(n1[i]%2 == 0) cout << n1[i] << endl;
-    }
-}
-void indici_pari(int n1[20]){
-    cout << " I numeri che occupano posizioni pari sono : "<< endl;
-    for(int i = 0 ; i <20; i++){
-        if(i%2 == 0) cout << n1[i] << endl;
-    }
-}
-void som_sot(int n1[20]){
-    for(int i = 0 ; i <20; i++){
-        if(n1[i] > 0) n1[i] ++;
-        else if(n1[i] < 0) n1[i] --;
-    }
 
+void posizione_pari(int vett[20]){
+	cout << "Numeri in posizione pari:\n";
+	for (int i=0; i<20; i++) {
+		if (i%2 == 0) {
+			cout << vett[i] << endl;
+		}
+	}
 }
-void index(int n1[20]){
-    int indice;
-    cout << "Inserisci indice: ";
-    cin >> indice;
-    if( indice >= 0 && indice < 20) cout << "Il contenuto è " << n1[indice] << endl;
-    else cout << "Non esiste"<< endl;
+
+void aggiungi_togli(int vett[20]) {
+	for (int i=0; i<20; i++) {
+		if (vett[i]>0) {
+			vett[i] = vett[i]+1;
+		} else {
+			vett[i] = vett[i]-1;
+		}
+	}
+	cout << "Aggiunta un'unità ai numeri positivi e sottratta ai numeri negativi:\n";
+	for (int i=0; i<20; i++) {
+		cout << vett[i] << endl;
+	}
 }
-void calc_media( int n1[20], int &media){
-    for(int i = 0 ; i <20; i++){
-        media += n1[i];
+
+void elemento_indice(int vett[20], int posizione) {
+	cout << "Posizione dell'elemento da visualizzare(da 1 a 20): ";
+	cin >> posizione;
+	while (posizione>20 || posizione <=0) {
+		cout << "Posizione non presente nel vettore!";
+		cout << "Riprova:\n";
+		cin >> posizione;
+	} 
+	cout << "Elemento in posizione " << posizione << " : " << vett[posizione-1] << endl;
+}
+
+void media(int vett[20]){
+	float media;
+	for(int i = 0 ; i <20; i++){
+       media += vett[i];
     }
     media = media/ 20;
-}
-void count_val_media(int n1[20], int &media){
     int contatore = 0;
     for(int i = 0 ; i <20; i++){
-        if(n1[i] > media) contatore ++;
+        if(vett[i] > media) {
+        	contatore ++;
+		} 
     }
-    cout << "I numeri maggiori alla media sono in tutto : " << contatore<<endl;
+    cout << "I numeri maggiori alla media sono in tutto : " << contatore << endl;
+    cout << "Numeri superiori alla media:\n";
+    for (int i=0; i<20; i++) {
+		if (vett[i]>media) {
+			cout << vett[i] << endl;
+		}
+	}
 }
-void view_val_media(int n1[20], int &media){
-    cout << " I valori maggiori della media sono : "<< endl;
-    for(int i = 0 ; i <20; i++){
-        if(n1[i] > media) cout << n1[i] << endl;
-    }
-}
-void max_val(int n1[0], int &max){
-    for(int i = 0; i< 20; i++){
-        if(n1[i] > max) max = n1[i];
-    }
-}
-void view_ind_max(int n1[20], int &max){
-    cout << " Le posizioni occupate dal maggiore sono : "<< endl;
-    for(int i = 0; i< 20; i++){
-        if(n1[i] == max) cout << i << endl;
-    }
-}
-int main(){
-    int vettore[20], media = 0, max =0,  val;
-    
-    input_valori(vettore);
-    numeri_pari(vettore);
-    indici_pari(vettore);
-    som_sot(vettore);
-    view_vet(vettore);
-    index(vettore);
-    calc_media(vettore, media);
-    count_val_media(vettore, media);
-    view_val_media(vettore, media);
-    val = vettore[0];
-    vettore[0] = vettore[19];
-    vettore[19] = val;
-    max_val(vettore, max);
-    cout << "Il valore maggiore è " << max << endl;
-    view_ind_max(vettore, max);
 
-    return 0;
+void primo_ultimo_elemento(int vett[20]) {
+	int u;
+	u = vett[19];
+	vett[19] = vett[0];
+	vett[0] = u;
+	cout << "Primo elemento: " << vett[0] << endl;
+	cout << "Ultimo elemento: " << vett[19] << endl;
+}
+
+int valore_massimo(int vett[20]) {
+	int max=0;
+	for (int i=0; i<20; i++) {
+		if (vett[i]> max) {
+			max = vett[i];
+		}
+	}
+	cout << "Valore massimo: " << max;
+	cout << "\nPosizione/i del numero maggiore: \n";
+	for (int i=0; i<20; i++) {
+		if (vett[i] == max) {
+			cout << i << endl;
+		}
+	}
+}
+
+int main(){
+	int vettore[20];
+	int posizione;
+	crea_vettore(vettore);
+	numeri_pari(vettore);
+	posizione_pari(vettore);
+	aggiungi_togli(vettore);
+	elemento_indice(vettore, posizione);
+	media(vettore); 
+	primo_ultimo_elemento(vettore);
+	valore_massimo(vettore);
+	return 0;
 }
