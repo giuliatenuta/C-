@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+
+using namespace std;
+
+int main (){
+	int giudici, candidati;
+	cout << "Numero giudici: ";
+	cin>> giudici;
+	cout << "Numero candidati: ";
+	cin >> candidati;
+	int voti[candidati][giudici], sommavoti[candidati], max=0, maxin, minin, min=0;
+	double mediavoti[giudici];
+	
+	srand(time(NULL));
+	for (int i=0; i<giudici; i++) {
+		cout << i+1 << "^: ";
+		for (int x=0; x<giudici; x++){
+			voti[i][x] = rand()%6;
+			cout << voti[i][x] << " ";
+		}
+		cout << endl;
+	}
+	
+	for (int i=0; i<candidati; i++){
+		sommavoti[i] = 0;
+	}
+	for (int i=0; i<giudici; i++){
+		mediavoti[i] = 0;
+	}
+	for (int i=0; i<candidati; i++){
+		for (int x=0; x<giudici; x++) {
+			sommavoti[i] += voti[i][x];
+			mediavoti[i] = mediavoti[i]/candidati;
+			if (mediavoti[i] < min) {
+				min = mediavoti[i];
+				minin= i;
+			}
+		}
+	}
+	
+	cout << "Candidato più intelligente: " << maxin+1 << endl;
+	cout << "Giudice più severo: " << minin+1 << endl;
+	return 0;
+}
